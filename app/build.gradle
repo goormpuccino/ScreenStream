@@ -103,11 +103,3 @@ dependencies {
 
     debugImplementation("com.squareup.leakcanary:leakcanary-android:$leakcanary")
 }
-
-apply plugin: "com.google.gms.google-services"
-
-android.applicationVariants.all { variant ->
-    if (variant.name == "fabricfreeDebug" || variant.name == "fabricfreeRelease") {
-        project.tasks.getByName("process" + variant.name.capitalize() + "GoogleServices").enabled = false
-    }
-}
