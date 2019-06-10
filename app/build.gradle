@@ -96,10 +96,4 @@ dependencies {
     implementation("org.koin:koin-android:$koin")
     implementation("com.github.iamironz:binaryprefs:$binaryprefs")
     implementation("com.elvishew:xlog:$xlog")
-
-    fabricImplementation("com.google.android.play:core:$playCore")
-    fabricReleaseImplementation("com.google.firebase:firebase-core:$firebaseCore")
-    fabricReleaseImplementation("com.crashlytics.sdk.android:crashlytics:$fabricCrashlytics")
-
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:$leakcanary")
 }
