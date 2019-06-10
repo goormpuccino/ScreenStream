@@ -107,11 +107,21 @@ class BitmapCapture constructor(
                 val rotation = display.rotation
                 var previous = rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180
                 var current: Boolean
+                var prevres: Int = 0
 
                 XLog.d(this@BitmapCapture.getLog("Start", "Rotation detector started"))
                 while (isActive) {
                     delay(250)
                     val newRotation = display.rotation
+                    val dispPoint = Point()
+                    display.getSize(dispPoint)
+                    val newres = dispPoint.x + dispPoint.y
+
+                    if (newres != prevres) {
+                        if (state == State.STARTED) restart()
+                        prevres = newres
+                    }
+
                     current = newRotation == Surface.ROTATION_0 || newRotation == Surface.ROTATION_180
                     if (previous != current) {
                         XLog.d(this@BitmapCapture.getLog("Start", "Rotation detected"))
